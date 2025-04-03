@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smarttimer/screens/dashboard_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:smarttimer/providers/timer_provider.dart';
 import 'screens/timer_screen.dart';
 
 void main() {
@@ -12,15 +13,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Smart Timer',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => TimerProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Smart Timer',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const TimerScreen(),
       ),
-      home:DashboardScreen()
     );
   }
 }
