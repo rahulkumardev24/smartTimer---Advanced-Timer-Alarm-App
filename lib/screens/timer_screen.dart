@@ -147,7 +147,12 @@ class _TimerScreenState extends State<TimerScreen> {
       _isRunning = false;
       _isPaused = false;
       _isCompleted = false;
+       _hours = 0;
+       _minutes = 0;
+      _seconds = 0;
+
       _remainingSeconds = 0;
+
     });
   }
 
@@ -171,11 +176,16 @@ class _TimerScreenState extends State<TimerScreen> {
       _isRunning = false;
       _isCompleted = false;
       _isPaused = false;
-      _remainingSeconds = 0;
-      _hours = 0;
-      _minutes = 0;
-      _seconds = 0;
+      // Store the initial time values
+      int initialHours = _hours;
+      int initialMinutes = _minutes;
+      int initialSeconds = _seconds;
+      // Reset the remaining seconds to initial time
+      _remainingSeconds = (initialHours * 3600) + (initialMinutes * 60) + initialSeconds;
+      // Start the timer again
+      _isRunning = true;
     });
+    _runTimer();
   }
 
   Future<void> _playCompletionSound() async {
@@ -303,7 +313,8 @@ class _TimerScreenState extends State<TimerScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             /// time pick
             if (!_isRunning && !_isCompleted && !_isPaused) 
@@ -312,81 +323,118 @@ class _TimerScreenState extends State<TimerScreen> {
             /// --- running time --- ///
             if (_isRunning || _isCompleted || _isPaused)
               Center(
-                child: TweenAnimationBuilder(
-                  tween: Tween<double>(begin: 0.0, end: 1.0),
-                  duration: Duration(seconds: _remainingSeconds),
-                  builder: (context, value, child) {
-                    final totalSeconds =
-                        (_hours * 3600) + (_minutes * 60) + _seconds;
-                    final progress =
-                        _isCompleted
-                            ? 1.0
-                            : 1 - (_remainingSeconds / totalSeconds);
-                    return Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                          width: 250,
-                          height: 250,
-                          child: CustomPaint(
-                            painter: GradientCircularProgressPainter(
-                              progress: progress,
-                              strokeWidth: 12,
-                              gradientColors:
-                                  _isCompleted
-                                      ? [
-                                        Colors.green.shade300,
-                                        Colors.greenAccent,
-                                        Colors.greenAccent.shade100,
-                                      ]
-                                      : [
-                                        Colors.red.shade400,
-                                        Colors.yellow.shade200,
-                                        Colors.green.shade200,
-                                      ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.background.withAlpha(160),
+                    shape: BoxShape.circle ,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12 ,
+                        blurRadius: 5 ,
+                        spreadRadius: 1 ,offset: Offset(2, 2)
+                      ) ,
+                      BoxShadow(
+                          color: Colors.black12 ,
+                          blurRadius: 5 ,
+                          spreadRadius: 1 ,offset: Offset(-2, -2)
+                      ) ,
+                    ]
+                  ),
+
+                  child: TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 0.0, end: 1.0),
+                    duration: Duration(seconds: _remainingSeconds),
+                    builder: (context, value, child) {
+                      final totalSeconds =
+                          (_hours * 3600) + (_minutes * 60) + _seconds;
+                      final progress =
+                          _isCompleted
+                              ? 1.0
+                              : 1 - (_remainingSeconds / totalSeconds);
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            width: 350,
+                            height: 350,
+                            child: CustomPaint(
+                              painter: GradientCircularProgressPainter(
+                                progress: progress,
+                                strokeWidth: 16,
+                                gradientColors:
+                                    _isCompleted
+                                        ? [
+                                          Colors.green.shade300,
+                                          Colors.greenAccent,
+                                          Colors.greenAccent.shade100,
+                                        ]
+                                        : [
+                                          Colors.red.shade400,
+                                          Colors.yellow.shade200,
+                                          Colors.green.shade200,
+                                        ],
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
-                          _formatTime(_remainingSeconds),
-                          style: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                          Text(
+                            _formatTime(_remainingSeconds),
+                            style: myTextStyle72(),
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
-            const SizedBox(height: 32),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (!_isRunning && !_isCompleted && !_isPaused)
-                  CircularButton(
-                    onPressed: _startTimer,
-                    icon: Icons.play_arrow_rounded,
-                    iconColor: Colors.white,
-                    iconSize: 150,
-                    buttonColor: Colors.greenAccent,
-                  ),
+            SizedBox(height: 50,),
 
-                if (_isRunning || _isPaused)
-                  CircularButton(
-                    buttonHeight: 100,
-                    buttonWidth: 100,
-                    onPressed: _pauseTimer,
-                    icon: _isPaused ? Icons.play_arrow_rounded : Icons.pause_rounded,
-                    iconColor: Colors.white,
-                    iconSize: 70,
-                    buttonColor:  _isPaused ? Colors.greenAccent : Colors.red.shade400,
-                  ),
-
-
-              ],
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  /// --- Start button --- ///
+                  if (!_isRunning && !_isCompleted && !_isPaused)
+                    CircularButton(
+                      onPressed: _startTimer,
+                      icon: Icons.play_arrow_rounded,
+                      iconColor: Colors.white,
+                      iconSize: 150,
+                      buttonColor: Colors.greenAccent,
+                    ),
+                  if (_isRunning || _isPaused)
+                    CircularButton(
+                      buttonHeight: 80,
+                      buttonWidth: 80,
+                      onPressed: _stopTimer,
+                      icon: Icons.close_rounded,
+                      iconColor: Colors.white,
+                      iconSize: 50,
+                    ),
+                  if (_isRunning || _isPaused)
+                    CircularButton(
+                      buttonHeight: 80,
+                      buttonWidth: 80,
+                      onPressed: _pauseTimer,
+                      icon: _isPaused ? Icons.play_arrow_rounded : Icons.pause_rounded,
+                      iconColor: Colors.white,
+                      iconSize: 50,
+                      buttonColor: _isPaused ? Colors.greenAccent : Colors.red.shade400,
+                    ),
+                  if (_isRunning || _isPaused)
+                    CircularButton(
+                      buttonHeight: 80,
+                      buttonWidth: 80,
+                      onPressed: _resetTimer,
+                      icon: Icons.restart_alt,
+                      iconColor: Colors.white,
+                      iconSize: 50,
+                      buttonColor: Colors.orange,
+                    ),
+                ],
+              ),
             ),
+            SizedBox(height: 30,)
           ],
         ),
       ),
