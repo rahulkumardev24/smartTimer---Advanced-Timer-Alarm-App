@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:smarttimer/screens/timer_screen.dart';
+import 'package:smarttimer/utils/custom_text_style.dart';
+
+import '../constants/colors.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -17,9 +21,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _controller = PersistentTabController(initialIndex: 0);
   }
 
-  List<Widget> _buildScreens() {
+  List<Widget> screens() {
     return [
-      const Center(child: Text("Home Screen")),
+      TimerScreen(),
       const Center(child: Text("Search Screen")),
       const Center(child: Text("Profile Screen")),
     ];
@@ -28,21 +32,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
-        title: "Home",
-        activeColorPrimary: Colors.blue,
+        icon: const Icon(Icons.timer),
+        title: "Timer",
+        textStyle: myTextStyle18(fontWeight: FontWeight.bold),
         inactiveColorPrimary: Colors.grey,
+        activeColorPrimary: AppColors.primary,
+        activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.search),
         title: "Search",
-        activeColorPrimary: Colors.blue,
+        textStyle: myTextStyle18(),
         inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.person),
         title: "Profile",
-        activeColorPrimary: Colors.blue,
+        textStyle: myTextStyle18(),
+        activeColorPrimary: Colors.orange,
         inactiveColorPrimary: Colors.grey,
       ),
     ];
@@ -53,14 +60,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return PersistentTabView(
       context,
       controller: _controller,
-      screens: _buildScreens(),
+      screens: screens(),
       items: _navBarsItems(),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardAppears: true,
-      padding: const EdgeInsets.only(top: 8),
-      backgroundColor: Colors.grey.shade900,
+      padding: const EdgeInsets.all(2),
+      backgroundColor: AppColors.background,
       isVisible: true,
       animationSettings: const NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(
@@ -74,8 +81,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       confineToSafeArea: true,
+      margin: EdgeInsets.all(16),
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white12,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(-3, -3),
+          ),
+          BoxShadow(
+            color: Colors.white12,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(3, 3),
+          ),
+          BoxShadow(
+            color: Colors.white12,
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(-3, 3),
+          ),
+
+        ],
+      ),
       navBarHeight: kBottomNavigationBarHeight,
-      navBarStyle: NavBarStyle.style1, // Define the navigation bar style
+
+      /// here define style number
+      navBarStyle: NavBarStyle.style10,
     );
   }
 }
