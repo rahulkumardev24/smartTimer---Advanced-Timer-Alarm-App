@@ -1,7 +1,11 @@
 # Smart Timer App
 
 A modern and feature-rich timer application built with Flutter that includes Timer, Stopwatch, and Alarm functionalities.
-
+## Poster
+<img src = "https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/1.png" /> 
+<img src = "https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/2.png" /> 
+<img src = "https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/3.png" /> 
+ 
 ## Features
 
 ### Timer
@@ -26,7 +30,20 @@ A modern and feature-rich timer application built with Flutter that includes Tim
 - Persistent alarm storage
 
 ## Screenshots
-[Add your app screenshots here]
+<div>
+  <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231018.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231204.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231221.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231252.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231311.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231330.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231508.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_231554.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_232114.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_232951.png" height = "600" />
+    <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_233401.png" height = "600" />
+   <img src="https://github.com/rahulkumardev24/smartTimer---Advanced-Timer-Alarm-App/blob/master/Screenshot_20250404_233412.png" height = "600" />
+</div>
 
 ## Technical Features
 - State management using Provider
