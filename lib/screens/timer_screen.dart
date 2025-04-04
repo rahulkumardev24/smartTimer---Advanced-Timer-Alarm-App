@@ -193,7 +193,7 @@ class TimerScreen extends StatelessWidget {
                           iconSize: 150,
                           buttonColor: Colors.greenAccent,
                         ),
-                      if (timerProvider.isRunning || timerProvider.isPaused)
+                      if (timerProvider.isRunning || timerProvider.isPaused || timerProvider.isCompleted)
                         CircularButton(
                           buttonHeight: 80,
                           buttonWidth: 80,
@@ -225,6 +225,17 @@ class TimerScreen extends StatelessWidget {
                           iconColor: Colors.white,
                           iconSize: 50,
                           buttonColor: Colors.orange,
+                        ),
+
+                      if (timerProvider.isCompleted)
+                        CircularButton(
+                          buttonHeight: 80,
+                          buttonWidth: 80,
+                          buttonColor: Colors.greenAccent,
+                          onPressed: timerProvider.stopTimer,
+                          icon: Icons.check,
+                          iconColor: Colors.white,
+                          iconSize: 50,
                         ),
                     ],
                   ),

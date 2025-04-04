@@ -64,18 +64,11 @@ class _AlarmScreenState extends State<AlarmScreen> {
                           child: ListTile(
                             title: Text(
                               alarmProvider.formatTimeWithAmPm(alarm.time),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: myTextStyle24(),
                             ),
                             subtitle: Text(
                               alarmProvider.getRepeatDaysText(alarm.repeatDays),
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14,
-                              ),
+                              style: myTextStyle15(fontColor: Colors.grey),
                             ),
                             trailing: Switch(
                               value: alarm.isActive,
