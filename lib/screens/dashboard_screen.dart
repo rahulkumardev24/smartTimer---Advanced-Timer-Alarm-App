@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+import 'package:smarttimer/screens/stopwatch_screen.dart';
 import 'package:smarttimer/screens/timer_screen.dart';
 import 'package:smarttimer/utils/custom_text_style.dart';
 
@@ -24,15 +25,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<Widget> screens() {
     return [
       TimerScreen(),
-      const Center(child: Text("Search Screen")),
+      StopwatchScreen(),
       const Center(child: Text("Profile Screen")),
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
+      /// timer
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.timer),
+        icon: const Icon(Icons.hourglass_empty_rounded),
         title: "Timer",
         textStyle: myTextStyle18(fontWeight: FontWeight.bold),
         inactiveColorPrimary: Colors.grey,
@@ -40,16 +42,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
         activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.search),
-        title: "Search",
+        icon: const Icon(Icons.timer),
+        title: "Stopwatch",
         textStyle: myTextStyle18(),
         inactiveColorPrimary: Colors.grey,
+        activeColorPrimary: AppColors.primary,
+        activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.person),
         title: "Profile",
         textStyle: myTextStyle18(),
-        activeColorPrimary: Colors.orange,
+        activeColorPrimary: AppColors.primary,
+        activeColorSecondary: Colors.white,
         inactiveColorPrimary: Colors.grey,
       ),
     ];

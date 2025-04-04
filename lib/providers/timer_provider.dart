@@ -12,7 +12,7 @@ class TimerProvider extends ChangeNotifier {
   bool _isCompleted = false;
   bool _isPaused = false;
 
-  // Getters
+  /// Getters
   int get hours => _hours;
   int get minutes => _minutes;
   int get seconds => _seconds;
@@ -81,6 +81,9 @@ class TimerProvider extends ChangeNotifier {
     _isPaused = false;
     _isCompleted = false;
     _remainingSeconds = 0;
+    _hours = 0;
+    _minutes = 0;
+    _seconds = 0;
     notifyListeners();
   }
 
@@ -92,13 +95,12 @@ class TimerProvider extends ChangeNotifier {
     _remainingSeconds = (_hours * 3600) + (_minutes * 60) + _seconds;
     // Start the timer again
     _isRunning = true;
-    notifyListeners();
     _runTimer();
+    notifyListeners();
   }
 
   void _runTimer() {
     if (!_isRunning) return;
-
     Future.delayed(const Duration(seconds: 1), () {
       if (_remainingSeconds > 0 && _isRunning) {
         _remainingSeconds--;
@@ -114,6 +116,7 @@ class TimerProvider extends ChangeNotifier {
     });
   }
 
+  /// complete audio play
   Future<void> _playCompletionSound() async {
     try {
       String audioPath = "lib/assets/sounds/bell.mp3";

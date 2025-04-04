@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smarttimer/providers/stopwatch_provider.dart';
 import 'package:smarttimer/providers/timer_provider.dart';
+import 'package:smarttimer/screens/dashboard_screen.dart';
 import 'screens/timer_screen.dart';
 
 void main() {
@@ -13,8 +15,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TimerProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TimerProvider()),
+        ChangeNotifierProvider(create: (context) => StopwatchProvider()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Smart Timer',
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const TimerScreen(),
+        home: const DashboardScreen(),
       ),
     );
   }

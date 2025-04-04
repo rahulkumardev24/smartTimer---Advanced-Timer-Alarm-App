@@ -115,10 +115,11 @@ TextStyle myTextStyle48({
 TextStyle myTextStyle72({
   FontWeight fontWeight  = FontWeight.normal ,
   Color fontColor = Colors.white ,
-  String fontFamily = "primary"
+  String fontFamily = "primary" ,
+  double fontSize = 72
 }){
   return TextStyle(
-      fontSize: 72 ,
+      fontSize: fontSize ,
       fontWeight: fontWeight ,
       fontFamily: fontFamily ,
       color: fontColor
