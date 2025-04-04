@@ -154,7 +154,7 @@ class StopwatchScreen extends StatelessWidget {
                       iconColor: Colors.white,
                       iconSize: 50,
                       buttonColor:
-                      stopwatchProvider.isRunning ? Colors.red : Colors.green,
+                      stopwatchProvider.isRunning ? Colors.red : Colors.greenAccent,
                     ),
                   ],
                 ),

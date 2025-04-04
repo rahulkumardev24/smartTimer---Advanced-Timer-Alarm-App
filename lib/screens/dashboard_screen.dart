@@ -5,6 +5,7 @@ import 'package:smarttimer/screens/timer_screen.dart';
 import 'package:smarttimer/utils/custom_text_style.dart';
 
 import '../constants/colors.dart';
+import 'alarm_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -26,7 +27,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return [
       TimerScreen(),
       StopwatchScreen(),
-      const Center(child: Text("Profile Screen")),
+      AlarmScreen()
     ];
   }
 
@@ -50,8 +51,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         activeColorSecondary: Colors.white,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.person),
-        title: "Profile",
+        icon: const Icon(Icons.access_alarms_rounded),
+        title: "Alarm",
         textStyle: myTextStyle18(),
         activeColorPrimary: AppColors.primary,
         activeColorSecondary: Colors.white,

@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.1
   just_audio: ^0.9.46
   persistent_bottom_nav_bar: ^6.2.1
+  audio_session: ^0.1.18
 
 dev_dependencies:
   flutter_test:
@@ -67,10 +68,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/to/resolution-aware-images
+  # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/to/asset-from-package
+  # https://flutter.dev/assets-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
@@ -93,4 +94,7 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
   assets:
-     - lib/assets/sounds/
+    - lib/assets/sounds/
+    - lib/assets/sounds/alarm.mp3
+    - lib/assets/fonts/
+

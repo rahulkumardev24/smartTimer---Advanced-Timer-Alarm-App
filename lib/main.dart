@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smarttimer/providers/alarm_provider.dart';
 import 'package:smarttimer/providers/stopwatch_provider.dart';
 import 'package:smarttimer/providers/timer_provider.dart';
 import 'package:smarttimer/screens/dashboard_screen.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => TimerProvider()),
         ChangeNotifierProvider(create: (context) => StopwatchProvider()),
+        ChangeNotifierProvider(create: (context) => AlarmProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
