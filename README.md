@@ -132,7 +132,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Add any other acknowledgments]
 
 ## Contact
-[Add your contact information]
+https://rahulkumardev24.github.io/
 
 ## Future Improvements
 - [ ] Add custom alarm sounds
